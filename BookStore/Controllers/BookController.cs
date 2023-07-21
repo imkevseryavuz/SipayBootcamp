@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System;
 using System.Linq;
 using BookStore.DBOperations;
@@ -8,7 +7,8 @@ using BookStore.BookOperations.CreateBook;
 using BookStore.BookOperations.GetBookDetail;
 using BookStore.BookOperations.UpdateBook;
 using BookStore.BookOperations.DeleteBook;
-using AutoMapper;
+using FluentValidation.Results;
+using FluentValidation;
 
 namespace BookStore.Controllers
 {
@@ -17,11 +17,10 @@ namespace BookStore.Controllers
     public class BookController : ControllerBase
     {
         private readonly BookStoreDbContext _context;
-        private readonly IMapper _mapper;
-        public BookController(BookStoreDbContext context, IMapper mapper)
+        public BookController(BookStoreDbContext context)
         {
             _context = context;
-            _mapper = mapper;
+ 
                 
         }
  
@@ -41,6 +40,8 @@ namespace BookStore.Controllers
             {
                 GetBookDetailQuery query = new GetBookDetailQuery(_context);
                 query.BookId = id;
+                GetBookDetailQueryValidator validator=new GetBookDetailQueryValidator();
+                validator.ValidateAndThrow(query);
                 result=query.Handle();
             }
             catch (Exception ex)
@@ -49,7 +50,6 @@ namespace BookStore.Controllers
                 return BadRequest(ex.Message);
             }
            
-            var book = _context.Books.Where(book => book.Id == id).SingleOrDefault();
             return Ok(result);
         }
 
@@ -60,7 +60,9 @@ namespace BookStore.Controllers
             try
             {
                 command.Model = newBook;
-                command.Handle();
+                CreateBookCommandValidator validator = new CreateBookCommandValidator();
+                validator.ValidateAndThrow(command);
+                command.Handle();          
             }
             catch (Exception ex)
             {
@@ -80,6 +82,8 @@ namespace BookStore.Controllers
                 UpdateBookCommand command = new UpdateBookCommand(_context);
                 command.BookId = id;
                 command.Model = updatedBook;
+                UpdateBookCommandValidator validator = new UpdateBookCommandValidator();
+                validator.ValidateAndThrow(command);
                 command.Handle();
             }
             catch (Exception ex)
@@ -99,6 +103,8 @@ namespace BookStore.Controllers
             {
                 DeleteBookCommand command = new DeleteBookCommand(_context);
                 command.BookId = id;
+                DeleteBookCommandValidator validator = new DeleteBookCommandValidator();
+                validator.ValidateAndThrow(command);
                 command.Handle();
 
             }
