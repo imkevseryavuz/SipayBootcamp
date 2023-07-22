@@ -1,32 +1,30 @@
-﻿using BookStore.Common;
+﻿using AutoMapper;
+using BookStore.Common;
 using BookStore.DBOperations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Reflection.Metadata;
 
-namespace BookStore.BookOperations.GetBookDetail
+namespace BookStore.Application.BookOperations.Queries.GetBookDetail
 {
     public class GetBookDetailQuery
     {
         private readonly BookStoreDbContext _dbContext;
+        private readonly IMapper _mapper;
         public int BookId { get; set; }
-        public GetBookDetailQuery(BookStoreDbContext dbContext)
+        public GetBookDetailQuery(BookStoreDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
+            _mapper = mapper;
         }
         public BookDetailViewModel Handle()
         {
-            var book = _dbContext.Books.Where(book => book.Id == BookId).SingleOrDefault();
+            var book = _dbContext.Books.Include(x=>x.Genre).Where(book => book.Id == BookId).SingleOrDefault();
             if (book is null)
-            {
                 throw new InvalidOperationException("Kitap bulunamadı!");
-            }
-            BookDetailViewModel wm= new BookDetailViewModel();
-            wm.Title = book.Title;
-            wm.PageCount = book.PageCount;
-            wm.PublishDate = book.PublishDate.Date.ToString("dd/mm/yyyy");
-            wm.Genre=((GenreEnum)book.GenreId).ToString();    
+            
+            BookDetailViewModel wm = _mapper.Map<BookDetailViewModel>(book);
             return wm;
         }
 

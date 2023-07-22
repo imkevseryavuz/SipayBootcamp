@@ -2,13 +2,14 @@
 using System;
 using System.Linq;
 using BookStore.DBOperations;
-using BookStore.BookOperations.GetBooks;
-using BookStore.BookOperations.CreateBook;
-using BookStore.BookOperations.GetBookDetail;
-using BookStore.BookOperations.UpdateBook;
-using BookStore.BookOperations.DeleteBook;
 using FluentValidation.Results;
 using FluentValidation;
+using BookStore.Application.BookOperations.Commands.CreateBook;
+using BookStore.Application.BookOperations.Commands.DeleteBook;
+using BookStore.Application.BookOperations.Commands.UpdateBook;
+using BookStore.Application.BookOperations.Queries.GetBooks;
+using BookStore.Application.BookOperations.Queries.GetBookDetail;
+using AutoMapper;
 
 namespace BookStore.Controllers
 {
@@ -17,17 +18,18 @@ namespace BookStore.Controllers
     public class BookController : ControllerBase
     {
         private readonly BookStoreDbContext _context;
-        public BookController(BookStoreDbContext context)
+        private readonly IMapper _mapper;
+        public BookController(BookStoreDbContext context, IMapper mapper)
         {
             _context = context;
- 
+            _mapper = mapper;
                 
         }
  
          [HttpGet]
          public IActionResult GetBooks()
          {
-            GetBookQuery query = new GetBookQuery(_context);
+            GetBookQuery query = new GetBookQuery(_context,_mapper);
             var result= query.Handle();
             return Ok(result);
          }       
@@ -35,21 +37,14 @@ namespace BookStore.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            BookDetailViewModel result;
-            try
-            {
-                GetBookDetailQuery query = new GetBookDetailQuery(_context);
+       
+                GetBookDetailQuery query = new GetBookDetailQuery(_context, _mapper);
                 query.BookId = id;
                 GetBookDetailQueryValidator validator=new GetBookDetailQueryValidator();
                 validator.ValidateAndThrow(query);
-                result=query.Handle();
-            }
-            catch (Exception ex)
-            {
 
-                return BadRequest(ex.Message);
-            }
-           
+                var result=query.Handle();
+     
             return Ok(result);
         }
 
@@ -57,19 +52,12 @@ namespace BookStore.Controllers
         public IActionResult AddBook([FromBody] CreateBookModel newBook)
         {
             CreateBookCommand command = new CreateBookCommand(_context);
-            try
-            {
+
                 command.Model = newBook;
                 CreateBookCommandValidator validator = new CreateBookCommandValidator();
                 validator.ValidateAndThrow(command);
                 command.Handle();          
-            }
-            catch (Exception ex)
-            {
-
-                return BadRequest(ex.Message);
-            }
-           
+ 
             return Ok();
 
         }
@@ -77,20 +65,14 @@ namespace BookStore.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateBook(int id, [FromBody] UpdateBookModel updatedBook)
         {
-            try
-            {
+
                 UpdateBookCommand command = new UpdateBookCommand(_context);
                 command.BookId = id;
                 command.Model = updatedBook;
                 UpdateBookCommandValidator validator = new UpdateBookCommandValidator();
                 validator.ValidateAndThrow(command);
                 command.Handle();
-            }
-            catch (Exception ex)
-            {
 
-                return BadRequest(ex.Message);
-            }
            
             return Ok();
 
@@ -99,33 +81,17 @@ namespace BookStore.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteBook(int id)
         {
-            try
-            {
+
                 DeleteBookCommand command = new DeleteBookCommand(_context);
                 command.BookId = id;
                 DeleteBookCommandValidator validator = new DeleteBookCommandValidator();
                 validator.ValidateAndThrow(command);
                 command.Handle();
 
-            }
-            catch (Exception ex)
-            {
-
-                return BadRequest(ex.Message);
-            }
             return Ok();
             
         }
 
-
-
-        /* [HttpGet]
-       public Book Get([FromQuery] int id)
-       {
-           var book = _context.Books.Where(book => book.Id == id).SingleOrDefault();
-           return book;
-       }
-       */
 
     }
 }

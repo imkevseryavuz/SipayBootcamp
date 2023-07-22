@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
-namespace BookStore.BookOperations.UpdateBook
+namespace BookStore.Application.BookOperations.Commands.UpdateBook
 {
     public class UpdateBookCommand
     {
@@ -12,7 +12,7 @@ namespace BookStore.BookOperations.UpdateBook
         public UpdateBookModel Model { get; set; }
         public UpdateBookCommand(BookStoreDbContext context)
         {
-                _context = context; 
+            _context = context;
         }
 
         public void Handle()

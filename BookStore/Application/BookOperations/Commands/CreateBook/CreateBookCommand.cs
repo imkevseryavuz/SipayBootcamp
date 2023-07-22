@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using BookStore.DBOperations;
+using BookStore.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
-namespace BookStore.BookOperations.CreateBook
+namespace BookStore.Application.BookOperations.Commands.CreateBook
 {
     public class CreateBookCommand
     {
@@ -14,7 +15,7 @@ namespace BookStore.BookOperations.CreateBook
 
         public CreateBookCommand(BookStoreDbContext dbContext)
         {
-                _dbContext = dbContext;
+            _dbContext = dbContext;
         }
 
         public void Handle()
@@ -27,18 +28,18 @@ namespace BookStore.BookOperations.CreateBook
             book.Title = Model.Title;
             book.PublishDate = Model.PublisDate;
             book.PageCount = Model.PageCount;
-            book.GenreId= Model.GenreId;
+            book.GenreId = Model.GenreId;
 
             _dbContext.Books.Add(book);
             _dbContext.SaveChanges();
-     
+
         }
     }
 
     public class CreateBookModel
     {
         public string Title { get; set; }
-        public int  GenreId { get; set; }
+        public int GenreId { get; set; }
         public int PageCount { get; set; }
         public DateTime PublisDate { get; set; }
     }
