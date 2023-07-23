@@ -8,9 +8,9 @@ namespace BookStore.Application.GenreOperations.Queries.GetGenres
 {
     public class GetGenresQuery
     {
-        public readonly BookStoreDbContext _context;
+        public readonly IBookStoreDbContext _context;
        
-        public GetGenresQuery(BookStoreDbContext context)
+        public GetGenresQuery(IBookStoreDbContext context)
         {
             _context = context;  
 

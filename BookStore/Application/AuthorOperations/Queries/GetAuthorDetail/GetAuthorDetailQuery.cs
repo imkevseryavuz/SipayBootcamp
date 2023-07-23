@@ -11,9 +11,9 @@ namespace BookStore.Application.AuthorOperations.Queries.GetAuthorDetail
     public class GetAuthorDetailQuery
     {
         public int AuthorId { get; set; }
-        private readonly BookStoreDbContext _context;
+        private readonly IBookStoreDbContext _context;
 
-        public GetAuthorDetailQuery(BookStoreDbContext context)
+        public GetAuthorDetailQuery(IBookStoreDbContext context)
         {
             _context = context;
         }

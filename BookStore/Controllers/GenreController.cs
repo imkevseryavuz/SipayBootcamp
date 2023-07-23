@@ -18,8 +18,8 @@ namespace BookStore.Controllers
     [Route("[controller]")]
     public class GenreController : ControllerBase
     {
-        private readonly BookStoreDbContext _context;
-        public GenreController(BookStoreDbContext context)
+        private readonly IBookStoreDbContext _context;
+        public GenreController(IBookStoreDbContext context)
         {
             _context = context;
 

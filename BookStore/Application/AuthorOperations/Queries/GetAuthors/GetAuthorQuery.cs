@@ -9,10 +9,10 @@ namespace BookStore.Application.AuthorOperations.Queries.GetAuthors
 {
     public class GetAuthorQuery
     {
-        private readonly BookStoreDbContext _context;
+        private readonly IBookStoreDbContext _context;
 
 
-        public GetAuthorQuery(BookStoreDbContext context)
+        public GetAuthorQuery(IBookStoreDbContext context)
         {
             _context = context;
         }

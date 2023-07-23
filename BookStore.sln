@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore", "BookStore\BookStore.csproj", "{F3188060-C4F3-4F36-8228-469835764520}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore", "BookStore\BookStore.csproj", "{F3188060-C4F3-4F36-8228-469835764520}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.UnitTests", "WebApi.UnitTests\WebApi.UnitTests.csproj", "{1376ADE1-6714-4A02-9247-3E15DAA3F5CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8E3C3809-27DA-4C51-A322-1C950FBB29DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{F3188060-C4F3-4F36-8228-469835764520}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3188060-C4F3-4F36-8228-469835764520}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3188060-C4F3-4F36-8228-469835764520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1376ADE1-6714-4A02-9247-3E15DAA3F5CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1376ADE1-6714-4A02-9247-3E15DAA3F5CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1376ADE1-6714-4A02-9247-3E15DAA3F5CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1376ADE1-6714-4A02-9247-3E15DAA3F5CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1376ADE1-6714-4A02-9247-3E15DAA3F5CE} = {8E3C3809-27DA-4C51-A322-1C950FBB29DE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AFE7E467-7CAC-46B8-BA12-ACE56DE6E139}

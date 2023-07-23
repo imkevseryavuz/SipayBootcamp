@@ -11,9 +11,9 @@ namespace BookStore.Application.BookOperations.Commands.CreateBook
     {
         public CreateBookModel Model { get; set; }
 
-        private readonly BookStoreDbContext _dbContext;
+        private readonly IBookStoreDbContext _dbContext;
 
-        public CreateBookCommand(BookStoreDbContext dbContext)
+        public CreateBookCommand(IBookStoreDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -26,10 +26,10 @@ namespace BookStore.Application.BookOperations.Commands.CreateBook
 
             book = new Book();
             book.Title = Model.Title;
-            book.PublishDate = Model.PublisDate;
+            book.PublishDate = Model.PublishDate;
             book.PageCount = Model.PageCount;
             book.GenreId = Model.GenreId;
-
+            book.AuthorId = Model.AuthorId;
             _dbContext.Books.Add(book);
             _dbContext.SaveChanges();
 
@@ -40,7 +40,8 @@ namespace BookStore.Application.BookOperations.Commands.CreateBook
     {
         public string Title { get; set; }
         public int GenreId { get; set; }
+        public int AuthorId { get; set; }
         public int PageCount { get; set; }
-        public DateTime PublisDate { get; set; }
+        public DateTime PublishDate { get; set; }
     }
 }

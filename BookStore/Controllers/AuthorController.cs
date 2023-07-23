@@ -19,13 +19,11 @@ namespace BookStore.Controllers
     [Route("[controller]")]
     public class AuthorController : Controller
     {
-        private readonly BookStoreDbContext _context;
-        private readonly IMapper _mapper;
-
-        public AuthorController(BookStoreDbContext context, IMapper mapper)
+        private readonly IBookStoreDbContext _context;
+        public AuthorController(IBookStoreDbContext context)
         {
             _context = context;
-            _mapper = mapper;
+
         }
 
         [HttpGet]
