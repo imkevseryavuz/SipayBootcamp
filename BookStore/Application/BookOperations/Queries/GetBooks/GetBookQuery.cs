@@ -21,7 +21,7 @@ namespace BookStore.Application.BookOperations.Queries.GetBooks
 
         public List<BooksViewModel> Handle()
         {
-            var bookList = _dbContext.Books.Include(x=>x.Genre).OrderBy(x => x.Id).ToList();
+            var bookList = _dbContext.Books.Include(x=>x.Genre).Include(a=>a.Author).OrderBy(x => x.Id).ToList();
             List<BooksViewModel> wm = _mapper.Map< List<BooksViewModel>>(bookList);   
             return wm;
         }
@@ -33,5 +33,7 @@ namespace BookStore.Application.BookOperations.Queries.GetBooks
         public int PageCount { get; set; }
         public string PublishDate { get; set; }
         public string Genre { get; set; }
+        public string AuthorName { get; set; }
+        public string AuthorSurname { get; set; }
     }
 }
