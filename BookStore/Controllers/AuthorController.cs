@@ -1,20 +1,16 @@
-﻿using AutoMapper;
-using BookStore.Application.AuthorOperations.Commands.CreateAuthor;
+﻿using BookStore.Application.AuthorOperations.Commands.CreateAuthor;
 using BookStore.Application.AuthorOperations.Commands.DeleteAuthor;
 using BookStore.Application.AuthorOperations.Commands.UpdateAuthor;
 using BookStore.Application.AuthorOperations.Queries.GetAuthorDetail;
 using BookStore.Application.AuthorOperations.Queries.GetAuthors;
-using BookStore.Application.BookOperations.Queries.GetBooks;
-using BookStore.Application.GenreOperations.Commands.CreateGenre;
-using BookStore.Application.GenreOperations.Commands.DeleteGenre;
-using BookStore.Application.GenreOperations.Commands.UpdateGenre;
-using BookStore.Application.GenreOperations.Queries.GetGenreDetail;
 using BookStore.DBOperations;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class AuthorController : Controller

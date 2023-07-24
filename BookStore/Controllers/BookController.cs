@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
 using BookStore.DBOperations;
-using FluentValidation.Results;
 using FluentValidation;
 using BookStore.Application.BookOperations.Commands.CreateBook;
 using BookStore.Application.BookOperations.Commands.DeleteBook;
@@ -10,9 +7,11 @@ using BookStore.Application.BookOperations.Commands.UpdateBook;
 using BookStore.Application.BookOperations.Queries.GetBooks;
 using BookStore.Application.BookOperations.Queries.GetBookDetail;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookStore.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class BookController : ControllerBase

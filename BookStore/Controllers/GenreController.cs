@@ -1,19 +1,16 @@
-﻿using BookStore.Application.BookOperations.Commands.CreateBook;
-using BookStore.Application.BookOperations.Commands.DeleteBook;
-using BookStore.Application.BookOperations.Commands.UpdateBook;
-using BookStore.Application.BookOperations.Queries.GetBookDetail;
-using BookStore.Application.BookOperations.Queries.GetBooks;
-using BookStore.Application.GenreOperations.Commands.CreateGenre;
+﻿using BookStore.Application.GenreOperations.Commands.CreateGenre;
 using BookStore.Application.GenreOperations.Commands.DeleteGenre;
 using BookStore.Application.GenreOperations.Commands.UpdateGenre;
 using BookStore.Application.GenreOperations.Queries.GetGenreDetail;
 using BookStore.Application.GenreOperations.Queries.GetGenres;
 using BookStore.DBOperations;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class GenreController : ControllerBase
