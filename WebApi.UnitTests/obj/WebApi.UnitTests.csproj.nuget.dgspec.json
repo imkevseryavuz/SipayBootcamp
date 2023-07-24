@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kevser\\Desktop\\Task 8\\WebApi.UnitTests\\WebApi.UnitTests.csproj": {}
+    "C:\\Users\\Kevser\\Desktop\\SipayBootcamp\\WebApi.UnitTests\\WebApi.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kevser\\Desktop\\Task 8\\BookStore\\BookStore.csproj": {
+    "C:\\Users\\Kevser\\Desktop\\SipayBootcamp\\BookStore\\BookStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kevser\\Desktop\\Task 8\\BookStore\\BookStore.csproj",
+        "projectUniqueName": "C:\\Users\\Kevser\\Desktop\\SipayBootcamp\\BookStore\\BookStore.csproj",
         "projectName": "BookStore",
-        "projectPath": "C:\\Users\\Kevser\\Desktop\\Task 8\\BookStore\\BookStore.csproj",
+        "projectPath": "C:\\Users\\Kevser\\Desktop\\SipayBootcamp\\BookStore\\BookStore.csproj",
         "packagesPath": "C:\\Users\\Kevser\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kevser\\Desktop\\Task 8\\BookStore\\obj\\",
+        "outputPath": "C:\\Users\\Kevser\\Desktop\\SipayBootcamp\\BookStore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -109,14 +109,14 @@
         }
       }
     },
-    "C:\\Users\\Kevser\\Desktop\\Task 8\\WebApi.UnitTests\\WebApi.UnitTests.csproj": {
+    "C:\\Users\\Kevser\\Desktop\\SipayBootcamp\\WebApi.UnitTests\\WebApi.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kevser\\Desktop\\Task 8\\WebApi.UnitTests\\WebApi.UnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\Kevser\\Desktop\\SipayBootcamp\\WebApi.UnitTests\\WebApi.UnitTests.csproj",
         "projectName": "WebApi.UnitTests",
-        "projectPath": "C:\\Users\\Kevser\\Desktop\\Task 8\\WebApi.UnitTests\\WebApi.UnitTests.csproj",
+        "projectPath": "C:\\Users\\Kevser\\Desktop\\SipayBootcamp\\WebApi.UnitTests\\WebApi.UnitTests.csproj",
         "packagesPath": "C:\\Users\\Kevser\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kevser\\Desktop\\Task 8\\WebApi.UnitTests\\obj\\",
+        "outputPath": "C:\\Users\\Kevser\\Desktop\\SipayBootcamp\\WebApi.UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -139,8 +139,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Kevser\\Desktop\\Task 8\\BookStore\\BookStore.csproj": {
-                "projectPath": "C:\\Users\\Kevser\\Desktop\\Task 8\\BookStore\\BookStore.csproj"
+              "C:\\Users\\Kevser\\Desktop\\SipayBootcamp\\BookStore\\BookStore.csproj": {
+                "projectPath": "C:\\Users\\Kevser\\Desktop\\SipayBootcamp\\BookStore\\BookStore.csproj"
               }
             }
           }
